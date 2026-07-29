@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello</title>
+  </head>
+  <body>
+    <p>script 标签之前...</p>
+    <script>
+      alert("hello world");
+    </script>
+    <script src="demo.js">
+      alert(1); // 此内容会被忽略，因为设定了 src
+    </script>
+    <p>script 标签之后...</p>
+    <script>
+      alert("“I’m JavaScript!”");
+    </script>
+    <script src="alert.js"></script>
+  </body>
+</html>
