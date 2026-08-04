@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let eventMixin = {
+        on(eventName, handler) {
+          if (!this._eventHandlers) {
+            this._eventHandlers = {};
+          }
+          if (!this._eventHandlers[eventName]) {
+            this._eventHandlers[eventName] = [];
+          }
+          this._eventHandlers[eventName].push(handler);
+        },
+        off(eventName, handler) {
+          let handlers = this._eventHandlers?.[eventName];
+          if (!handlers) return;
+          for (let i = 0; i < handlers.length; i++) {
+            if (handlers[i] === handler) {
+              handlers.splice(i--, 1);
+            }
+          }
+        },
+        trigger(eventName, ...args) {
+          if (!this._eventHandlers?.[eventName]) {
+            return; // 该事件名称没有对应的事件处理程序（handler）
+          }
+
+          // 调用事件处理程序（handler）
+          this._eventHandlers[eventName].forEach((handler) =>
+            handler.apply(this, args),
+          );
+        },
+      };
+    </script>
+  </body>
+</html>

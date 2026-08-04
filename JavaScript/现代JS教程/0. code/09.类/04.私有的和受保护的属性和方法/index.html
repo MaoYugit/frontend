@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class PowerArray extends Array {
+        isEmpty() {
+          return this.length === 0;
+        }
+
+        static get [Symbol.species]() {
+          return Array;
+        }
+      }
+
+      let arr = new PowerArray(1, 2, 5, 10);
+      console.log(arr.isEmpty()); // false
+      let filtered = arr.filter((item) => item >= 5);
+      console.log(filtered.isEmpty()); // Uncaught TypeError: filtered.isEmpty is not a function
+    </script>
+  </body>
+</html>
