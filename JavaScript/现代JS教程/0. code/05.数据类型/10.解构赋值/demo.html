@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let arr = ["John", "Smith"];
+      let [firstName, surname] = arr;
+      console.log(firstName); // John
+      console.log(surname); // Smith
+
+      let [a, b] = "Hello World".split(" ");
+      console.log(a); // Hello
+      console.log(b); // World
+
+      let [c, , d] = [1, 2, 3];
+      console.log(c); // 1
+      console.log(d); // 3
+
+      let [one, two, three] = new Set([1, 2, 3]);
+      console.log(one); // 1
+      console.log(two); // 2
+      console.log(three); // 3
+
+      console.log("=====================================");
+
+      let user = {
+        name: "John",
+        year: 30,
+      };
+
+      let { name, year: age, isAdmin = false } = user;
+
+      let salaries = {
+        John: 100,
+        Pete: 300,
+        Mary: 250,
+      };
+      function topSalary(salaries) {
+        let maxSalary = 0;
+        let maxName = null;
+
+        for (let [name, salary] of Object.entries(salaries)) {
+          if (maxSalary < salary) {
+            maxSalary = salary;
+            maxName = name;
+          }
+        }
+        return maxName;
+      }
+    </script>
+  </body>
+</html>

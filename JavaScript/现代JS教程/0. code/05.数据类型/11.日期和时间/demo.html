@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let now = new Date();
+      console.log("当前日期和时间:", now + "   &&&&   " + now.toLocaleString());
+
+      let Jan01_1970 = new Date(0);
+      console.log("1970年1月1日:", Jan01_1970);
+
+      let Jan012_1970 = new Date(24 * 60 * 60 * 1000);
+      console.log("1970年1月2日:", Jan012_1970);
+
+      let Dec31_1969 = new Date(-24 * 3600 * 1000);
+      console.log("1969年12月31日:", Dec31_1969);
+
+      let date = new Date("2024-06-01");
+      console.log("2024年6月1日:", date);
+
+      let date01 = new Date(2011, 0, 1, 2, 3, 4, 567);
+      console.log("2011年1月1日 02:03:04.567:", date01);
+    </script>
+  </body>
+</html>

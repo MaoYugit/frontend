@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let john = { name: "John" };
+
+      let array = [john];
+
+      john.name = "Pete";
+      john = null;
+      // 修改对象的属性
+      console.log(array[0].name);
+
+      let peter = { name: "Peter" };
+      let map = new Map();
+      map.set(peter, "...");
+      console.log(map);
+      peter = null;
+      console.log(map);
+
+      let weakMap = new WeakMap();
+      let obj = {};
+      weakMap.set(obj, "ok");
+      console.log(weakMap);
+      obj = null;
+      console.log("12", weakMap);
+    </script>
+  </body>
+</html>

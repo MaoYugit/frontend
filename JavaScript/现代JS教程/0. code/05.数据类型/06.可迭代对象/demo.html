@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let range = {
+        from: 1,
+        to: 5,
+
+        [Symbol.iterator]() {
+          return {
+            current: this.from,
+            last: this.to,
+
+            next() {
+              if (this.current <= this.last) {
+                return {
+                  done: false,
+                  value: this.current++,
+                };
+              } else {
+                return {
+                  done: true,
+                };
+              }
+            },
+          };
+        },
+      };
+
+      // range[Symbol.iterator] = function () {
+      //   return {
+      //     current: this.from,
+      //     last: this.to,
+
+      //     next() {
+      //       if (this.current <= this.last) {
+      //         return {
+      //           done: false,
+      //           value: this.current++,
+      //         };
+      //       } else {
+      //         return {
+      //           done: true,
+      //         };
+      //       }
+      //     },
+      //   };
+      // };
+
+      for (let num of range) {
+        console.log(num); // 1,2,3,4,5
+      }
+
+      for (let char of "hello") {
+        console.log(char);
+      }
+
+      let str = "12345";
+      let iterator = str[Symbol.iterator]();
+      while (1) {
+        let result = iterator.next();
+        if (result.done) break;
+        console.log(result.value);
+      }
+
+      let arrayLike = {
+        0: "Hello",
+        1: "World",
+        length: 2,
+      };
+
+      let arr = Array.from(arrayLike);
+      console.log(arr);
+      arr.pop();
+      console.log(arr);
+
+      let arr2 = Array.from(range, (num) => num * num);
+      console.log(arr2);
+    </script>
+  </body>
+</html>

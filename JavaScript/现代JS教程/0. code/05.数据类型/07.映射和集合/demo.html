@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let map = new Map();
+      map.set("name", "张三");
+      console.log(map);
+      map.set("age", 18);
+      console.log(map);
+      console.log(map.get("name"));
+      console.log(map.get("age"));
+      console.log(map.has("name"));
+      console.log(map.has("nam"));
+      console.log(map.size);
+      map.delete("name");
+      console.log(map);
+      map.clear();
+      console.log(map);
+      map.set(true, "true");
+      console.log(map);
+      map.set({ name: "张三" }, "true");
+      console.log(map);
+
+      let john = { name: "John" };
+      let ben = { name: "Ben" };
+
+      let visitsCountObj = {};
+      visitsCountObj[john] = 123;
+      visitsCountObj[ben] = 456;
+      console.log(visitsCountObj[john]);
+      console.log(visitsCountObj["[object Object]"]);
+
+      map.set(john, 123).set(ben, 456);
+      console.log(map);
+
+      let recipeMap = new Map([
+        ["cucumber", 500],
+        ["tomatoes", 350],
+        ["onion", 50],
+      ]);
+      console.log(recipeMap);
+      for (let vegetable of recipeMap.keys()) {
+        console.log(vegetable);
+      }
+      for (let count of recipeMap.values()) {
+        console.log(count);
+      }
+      for (let entry of recipeMap) {
+        console.log(entry);
+      }
+
+      recipeMap.forEach((value, key, map) => {
+        console.log(`${key}: ${value}`);
+      });
+
+      let obj = {
+        name: "张三",
+        age: 18,
+      };
+      console.log(obj);
+      let map2 = new Map(Object.entries(obj));
+      console.log(map2);
+      let obj2 = Object.fromEntries(map2);
+      console.log(obj2);
+
+      let set = new Set();
+      set.add(1);
+      set.add(2);
+      set.add(1); // 重复的值不会被添加
+      console.log(set);
+      console.log(set.size);
+      console.log(set.has(1));
+      set.delete(1);
+      console.log(set.has(1));
+      set.clear();
+      console.log(set, set.size);
+
+      set.add(1);
+      set.add(2);
+      set.add({ name: "why" });
+      console.log(set);
+      for (let item of set) {
+        console.log("111", item);
+      }
+
+      set.forEach((value, valueAgain, set) => {
+        console.log("222", value);
+      });
+
+      console.log(set.keys());
+      console.log(set.values());
+      console.log(set.entries());
+
+      let arr = [1, 1, 2, 3, 2, 3, 4, 5, 4, 5];
+      function unique(arr) {
+        return [...new Set(arr)];
+      }
+      console.log(unique(arr));
+
+      function a_clean(arr) {
+        let map = new Map();
+
+        for (let word of arr) {
+          let sorted = word.toLowerCase().split("").sort().join("");
+          map.set(sorted, word);
+        }
+        return [...map.values()];
+      }
+
+      let arr2 = [
+        "nap",
+        "teachers",
+        "cheaters",
+        "PAN",
+        "ear",
+        "era",
+        "hectares",
+      ];
+
+      alert(aclean(arr));
+    </script>
+  </body>
+</html>
