@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      try {
+        console.log("try");
+        throw new Error("error");
+        console.log("try2");
+      } catch (err) {
+        console.log("catch", err);
+      } finally {
+        console.log("finally");
+      }
+
+      let json = '{"name": "zhangsan", "age": 30}';
+      let user = JSON.parse(json);
+      console.log(user, user.name, user.age);
+
+      // function f() {
+      //   try {
+      //     alert('start');
+      //     return "result";
+      //   } catch (err) {
+      //     /// ...
+      //   }
+      //     alert('cleanup!');
+
+      // }
+      // alert(f());
+
+      function f() {
+        try {
+          alert("start");
+          throw new Error("一个 error");
+        } catch (err) {
+          // ...
+          if ("无法处理此 error") {
+            throw err;
+          }
+        } finally {
+          alert("cleanup!");
+        }
+      }
+
+      f(); // cleanup!
+    </script>
+  </body>
+</html>

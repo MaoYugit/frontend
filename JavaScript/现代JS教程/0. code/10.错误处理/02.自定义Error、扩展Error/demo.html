@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let json = `{ "name": "zhangsan", "age": 30 }`;
+
+      class ValidationError extends Error {
+        constructor(message) {
+          super(message);
+          this.name = "ValidationError";
+        }
+      }
+
+      function test() {
+        throw new ValidationError("Whoops!");
+      }
+
+      try {
+        test();
+      } catch (err) {
+        alert(err.message); // Whoops!
+        alert(err.name); // ValidationError
+        alert(err.stack); // stack
+      }
+    </script>
+  </body>
+</html>
